@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Brew & Bloom | Coffee • Food • Good Vibes</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#F7F3EE;
+--white:#ffffff;
+--coffee:#6F4E37;
+--caramel:#C98A52;
+--dark:#1D1D1D;
+--text:#444;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Poppins,sans-serif;
+background:var(--bg);
+color:var(--dark);
+overflow-x:hidden;
+}
+
+h1,h2,h3{
+font-family:"Playfair Display",serif;
+font-weight:600;
+}
+
+.container{
+width:min(1200px,90%);
+margin:auto;
+}
+
+section{
+padding:100px 0;
+}
+
+.small-title{
+color:var(--caramel);
+letter-spacing:3px;
+font-size:12px;
+text-transform:uppercase;
+margin-bottom:15px;
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:14px 30px;
+border-radius:50px;
+text-decoration:none;
+transition:.35s;
+cursor:pointer;
+font-weight:500;
+}
+
+.btn-primary{
+background:var(--caramel);
+color:white;
+}
+
+.btn-primary:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 30px rgba(201,138,82,.4);
+}
+
+.btn-outline{
+border:2px solid white;
+color:white;
+}
+
+.btn-outline:hover{
+background:white;
+color:black;
+}
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:22px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:999;
+transition:.35s;
+}
+
+nav.scrolled{
+background:white;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.logo h2{
+font-size:28px;
+color:white;
+}
+
+.logo span{
+font-size:12px;
+color:#ddd;
+}
+
+nav.scrolled .logo h2,
+nav.scrolled a{
+color:var(--dark);
+}
+
+nav.scrolled .logo span{
+color:#777;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:40px;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-size:15px;
+transition:.3s;
+}
+
+nav a:hover{
+color:var(--caramel);
+}
+
+.reserve{
+background:var(--caramel);
+padding:12px 24px;
+border-radius:50px;
+color:white!important;
+}
+
+.menu-toggle{
+display:none;
+font-size:30px;
+color:white;
+cursor:pointer;
+}
+
+.hero{
+height:100vh;
+background:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1800') center/cover;
+display:flex;
+align-items:center;
+position:relative;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.48);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+width:min(1200px,90%);
+margin:auto;
+color:white;
+}
+
+.hero h1{
+font-size:clamp(48px,7vw,84px);
+line-height:1.05;
+margin:20px 0;
+}
+
+.hero p{
+max-width:560px;
+line-height:1.8;
+}
+
+.hero-buttons{
+display:flex;
+gap:20px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:70px;
+align-items:center;
+}
+
+.about img{
+width:100%;
+border-radius:22px;
+box-shadow:0 20px 50px rgba(0,0,0,.08);
+}
+
+.about h2{
+font-size:48px;
+margin-bottom:20px;
+}
+
+.about p{
+line-height:1.9;
+color:var(--text);
+margin-bottom:35px;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+margin-top:30px;
+}
+
+.stat{
+background:white;
+padding:25px;
+border-radius:18px;
+}
+
+.stat h3{
+font-size:34px;
+color:var(--caramel);
+}
+
+.menu-section .header{
+display:flex;
+justify-content:space-between;
+align-items:flex-end;
+margin-bottom:45px;
+}
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:22px;
+overflow:hidden;
+transition:.35s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 45px rgba(0,0,0,.1);
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.card-body{
+padding:24px;
+}
+
+.card h3{
+margin-bottom:8px;
+}
+
+.card p{
+color:#777;
+font-size:14px;
+}
+
+.price{
+margin-top:18px;
+font-weight:600;
+color:var(--coffee);
+}
+
+.gallery{
+background:#1A1816;
+color:white;
+}
+
+.gallery-grid{
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+grid-auto-rows:220px;
+gap:18px;
+margin-top:45px;
+}
+
+.gallery-grid img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:18px;
+transition:.4s;
+}
+
+.gallery-grid img:hover{
+transform:scale(1.04);
+}
+
+.gallery-grid img:first-child{
+grid-row:span 2;
+}
+
+.features h2{
+text-align:center;
+margin-bottom:60px;
+}
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:26px;
+margin-top:40px;
+}
+
+.feature-card{
+position:relative;
+background:white;
+padding:42px 24px 34px;
+border-radius:24px;
+box-shadow:0 10px 30px rgba(0,0,0,.04);
+transition:all .4s ease;
+border:1px solid rgba(201,138,82,.15);
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+overflow:hidden;
+}
+
+.feature-card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 45px rgba(111,78,55,.12);
+border-color:rgba(201,138,82,.4);
+}
+
+.feature-badge{
+position:absolute;
+top:18px;
+right:20px;
+font-family:"Playfair Display",serif;
+font-size:14px;
+font-weight:700;
+color:var(--caramel);
+opacity:.6;
+}
+
+.feature-anim-wrap{
+margin-bottom:24px;
+}
+
+.anim-circle{
+width:96px;
+height:96px;
+border-radius:50%;
+background:linear-gradient(135deg,rgba(201,138,82,.1),rgba(111,78,55,.04));
+border:1px solid rgba(201,138,82,.2);
+display:flex;
+align-items:center;
+justify-content:center;
+padding:12px;
+box-shadow:inset 0 2px 6px rgba(255,255,255,.8),0 8px 20px rgba(201,138,82,.08);
+transition:all .4s ease;
+}
+
+.feature-card:hover .anim-circle{
+transform:scale(1.08);
+background:linear-gradient(135deg,rgba(201,138,82,.18),rgba(111,78,55,.08));
+border-color:var(--caramel);
+}
+
+.anim-svg{width:100%;height:100%;display:block;}
+.feature-card h3{font-size:20px;margin-bottom:10px;}
+.feature-card p{color:#666;font-size:14px;line-height:1.6;}
+
+.bg-pulse{animation:animBgPulse 3s ease-in-out infinite;}
+@keyframes animBgPulse{0%,100%{transform:scale(1);opacity:.12;}50%{transform:scale(1.06);opacity:.25;}}
+
+.sparkle{animation:animTwinkle 2.2s ease-in-out infinite;transform-origin:center;}
+.sp-1{animation-delay:0s;}
+.sp-2{animation-delay:1.1s;}
+@keyframes animTwinkle{0%,100%{opacity:.2;transform:scale(.7);}50%{opacity:1;transform:scale(1.3);}}
+
+.steam{stroke-dasharray:20;stroke-dashoffset:20;animation:animSteam 2.5s ease-in-out infinite;}
+.steam-1{animation-delay:0s;}
+.steam-2{animation-delay:.6s;}
+.steam-3{animation-delay:1.2s;}
+@keyframes animSteam{0%{stroke-dashoffset:20;opacity:0;transform:translateY(3px);}40%{opacity:.9;}100%{stroke-dashoffset:0;opacity:0;transform:translateY(-6px);}}
+
+.wifi-wave{animation:animWifiWave 2s ease-in-out infinite;transform-origin:50px 71px;}
+.wave-1{animation-delay:.1s;}
+.wave-2{animation-delay:.4s;}
+.wave-3{animation-delay:.7s;}
+@keyframes animWifiWave{0%,100%{opacity:.25;}50%{opacity:1;stroke:#6F4E37;}}
+
+.wifi-beacon{animation:animBeacon 2s ease-out infinite;transform-origin:50px 71px;}
+@keyframes animBeacon{0%{transform:scale(.6);opacity:.9;}100%{transform:scale(1.6);opacity:0;}}
+
+.wifi-dot{animation:animWifiDot 2s ease-in-out infinite;}
+@keyframes animWifiDot{0%,100%{transform:scale(1);fill:#6F4E37;}50%{transform:scale(1.18);fill:var(--caramel);}}
+
+.pastry-aroma{stroke-dasharray:18;stroke-dashoffset:18;animation:animPastryAroma 2.6s ease-in-out infinite;}
+.ar-1{animation-delay:.2s;}
+.ar-2{animation-delay:.8s;}
+.ar-3{animation-delay:1.4s;}
+@keyframes animPastryAroma{0%{stroke-dashoffset:18;opacity:0;}50%{opacity:.85;}100%{stroke-dashoffset:0;opacity:0;transform:translateY(-5px);}}
+
+.pastry-body{animation:animPastrySway 3.2s ease-in-out infinite;transform-origin:50px 60px;}
+@keyframes animPastrySway{0%,100%{transform:scale(1);}50%{transform:scale(1.03) translateY(-1px);}}
+
+.lamp-flare{animation:animLampGlow 2.8s ease-in-out infinite;transform-origin:50px 51px;}
+@keyframes animLampGlow{0%,100%{transform:scale(.85);opacity:.25;}50%{transform:scale(1.25);opacity:.65;}}
+
+.leaf-branch{animation:animLeafBreeze 4s ease-in-out infinite;transform-origin:50px 78px;}
+@keyframes animLeafBreeze{0%,100%{transform:rotate(0deg);}35%{transform:rotate(4deg);}75%{transform:rotate(-3deg);}}
+
+.testimonial{
+background:#EFE5DB;
+}
+
+.testimonial-card{
+background:white;
+padding:55px;
+border-radius:24px;
+text-align:center;
+max-width:900px;
+margin:auto;
+box-shadow:0 15px 40px rgba(0,0,0,.06);
+}
+
+.testimonial-card p{
+font-size:20px;
+font-style:italic;
+line-height:1.8;
+margin:20px 0;
+}
+
+.contact{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.contact img{
+width:100%;
+border-radius:22px;
+}
+
+.contact ul{
+list-style:none;
+margin-top:25px;
+}
+
+.contact li{
+padding:14px 0;
+border-bottom:1px solid #E8E2D9;
+display:flex;
+align-items:center;
+gap:16px;
+transition:all .3s ease;
+}
+
+.contact li:hover{
+transform:translateX(4px);
+}
+
+.contact-icon-box{
+width:44px;
+height:44px;
+border-radius:12px;
+background:linear-gradient(135deg,rgba(201,138,82,.12),rgba(111,78,55,.05));
+border:1px solid rgba(201,138,82,.22);
+display:flex;
+align-items:center;
+justify-content:center;
+flex-shrink:0;
+transition:all .35s ease;
+box-shadow:0 4px 12px rgba(201,138,82,.06);
+}
+
+.contact li:hover .contact-icon-box{
+transform:scale(1.08) translateY(-2px);
+border-color:var(--caramel);
+background:linear-gradient(135deg,rgba(201,138,82,.22),rgba(111,78,55,.1));
+box-shadow:0 8px 18px rgba(201,138,82,.18);
+}
+
+.contact-svg{width:26px;height:26px;display:block;}
+.pin-marker{animation:animPinBounce 2.5s ease-in-out infinite;transform-origin:16px 26px;}
+.pin-shadow{animation:animPinShadow 2.5s ease-in-out infinite;transform-origin:16px 27px;}
+@keyframes animPinBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-3.5px);}}
+@keyframes animPinShadow{0%,100%{transform:scale(1);opacity:.35;}50%{transform:scale(.65);opacity:.15;}}
+
+.phone-body{animation:animPhoneRing 3.2s ease-in-out infinite;transform-origin:16px 16px;}
+@keyframes animPhoneRing{0%,75%,100%{transform:rotate(0deg);}78%{transform:rotate(-8deg);}82%{transform:rotate(8deg);}86%{transform:rotate(-5deg);}90%{transform:rotate(5deg);}}
+.p-wave{animation:animPhoneWave 2s ease-in-out infinite;}
+.pw-1{animation-delay:0s;}.pw-2{animation-delay:.4s;}
+@keyframes animPhoneWave{0%,100%{opacity:.2;stroke-width:1.2;}50%{opacity:1;stroke-width:1.8;stroke:#6F4E37;}}
+
+.cam-lens{animation:animLensPulse 3s ease-in-out infinite;transform-origin:16px 16px;}
+@keyframes animLensPulse{0%,100%{transform:scale(1);opacity:.8;}50%{transform:scale(1.1);stroke:var(--caramel);opacity:1;}}
+.cam-flash{animation:animFlashTwinkle 2.4s ease-in-out infinite;}
+@keyframes animFlashTwinkle{0%,100%{opacity:.3;transform:scale(.8);}50%{opacity:1;transform:scale(1.3);fill:#FFDF7E;}}
+
+.clock-min{animation:animClockMin 8s linear infinite;transform-origin:16px 16px;}
+.clock-hour{animation:animClockHour 24s linear infinite;transform-origin:16px 16px;}
+@keyframes animClockMin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+@keyframes animClockHour{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+
+footer{
+background:#151515;
+color:white;
+padding:35px 0;
+}
+
+.footer{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.footer-links{
+display:flex;
+gap:25px;
+}
+
+.footer-links a{
+color:#ccc;
+text-decoration:none;
+}
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:all .8s ease;
+}
+
+.reveal.show{
+opacity:1;
+transform:translateY(0);
+}
+
+@media(max-width:992px){
+
+.menu-grid,
+.feature-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.about,
+.contact{
+grid-template-columns:1fr;
+}
+
+.gallery-grid{
+grid-template-columns:1fr 1fr;
+}
+
+nav ul{
+display:none;
+}
+
+.menu-toggle{
+display:block;
+}
+
+}
+
+@media(max-width:600px){
+
+.menu-grid,
+.feature-grid,
+.gallery-grid{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:46px;
+}
+
+.hero-buttons{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.about h2{
+font-size:38px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav id="navbar">
+
+<div class="logo">
+<h2>Brew & Bloom</h2>
+<span>Coffee • Food • Good Vibes</span>
+</div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#menu">Menu</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<a href="#" class="reserve">Reservasi</a>
+
+<div class="menu-toggle">☰</div>
+
+</nav>
+
+<section class="hero" id="home">
+
+<div class="hero-content reveal">
+
+<p>WELCOME TO BREW & BLOOM</p>
+
+<h1>Good Coffee,<br>Better Days</h1>
+
+<p>
+Nikmati kopi pilihan, pastry fresh setiap hari, dan suasana hangat
+untuk bekerja, ngobrol maupun menikmati waktu sendiri.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#menu" class="btn btn-primary">Lihat Menu</a>
+
+<a href="#contact" class="btn btn-outline">Reservasi</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<div class="container about reveal">
+
+<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=900">
+
+<div>
+
+<p class="small-title">Tentang Kami</p>
+
+<h2>Tempat dimana kopi bertemu kenyamanan.</h2>
+
+<p>
+Brew & Bloom hadir untuk menjadi ruang kecil dimana kamu bisa menikmati
+kopi berkualitas, menu lezat, dan suasana yang hangat—baik untuk bekerja,
+meeting, maupun menikmati waktu santai.
+</p>
+
+<a class="btn btn-primary">Lihat Cerita Kami</a>
+
+<div class="stats">
+
+<div class="stat">
+<h3>500+</h3>
+<p>Pelanggan Setia</p>
+</div>
+
+<div class="stat">
+<h3>100%</h3>
+<p>Premium Beans</p>
+</div>
+
+<div class="stat">
+<h3>5+</h3>
+<p>Varian Menu</p>
+</div>
+
+<div class="stat">
+<h3>4.9★</h3>
+<p>Google Rating</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="menu" class="menu-section">
+
+<div class="container reveal">
+
+<div class="header">
+
+<div>
+<p class="small-title">Menu Favorit</p>
+<h2>Signature Menu</h2>
+</div>
+
+<a class="btn btn-primary">Lihat Semua</a>
+
+</div>
+
+<div class="menu-grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=600">
+<div class="card-body">
+<h3>Iced Latte</h3>
+<p>Espresso + Fresh Milk</p>
+<div class="price">Rp28.000</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1555507036-ab794f4afe5a?w=600">
+<div class="card-body">
+<h3>Butter Croissant</h3>
+<p>Fresh every morning</p>
+<div class="price">Rp22.000</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=600">
+<div class="card-body">
+<h3>Matcha Latte</h3>
+<p>Premium Matcha</p>
+<div class="price">Rp32.000</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600">
+<div class="card-body">
+<h3>Chocolate</h3>
+<p>Rich & Creamy</p>
+<div class="price">Rp30.000</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="gallery" class="gallery">
+
+<div class="container reveal">
+
+<p class="small-title">Gallery</p>
+
+<h2>Momen di Brew & Bloom</h2>
+
+<div class="gallery-grid">
+
+<img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=900">
+<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600">
+<img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600">
+<img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600">
+<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600">
+
+</div>
+
+</div>
+
+</section>
+
+<section class="features">
+
+<div class="container reveal">
+
+<p class="small-title">Keunggulan</p>
+
+<h2>Kenapa Memilih Kami?</h2>
+
+<div class="feature-grid">
+
+<!-- 01: Premium Beans -->
+<div class="feature-card">
+    <span class="feature-badge">01</span>
+    <div class="feature-anim-wrap">
+        <div class="anim-circle">
+            <svg class="anim-svg anim-coffee" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="42" fill="url(#coffeeGlowH)" opacity="0.15" class="bg-pulse"/>
+                <path class="steam steam-1" d="M42 36 C40 30, 44 24, 42 18" stroke="#C98A52" stroke-width="2.5" stroke-linecap="round"/>
+                <path class="steam steam-2" d="M50 33 C48 27, 52 21, 50 15" stroke="#C98A52" stroke-width="2.5" stroke-linecap="round"/>
+                <path class="steam steam-3" d="M58 36 C56 30, 60 24, 58 18" stroke="#C98A52" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M30 46 C30 64, 40 72, 50 72 C60 72, 70 64, 70 46 Z" fill="url(#cupGradH)" stroke="#6F4E37" stroke-width="2.5"/>
+                <path d="M70 50 C77 50, 77 62, 70 62" stroke="#6F4E37" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <path d="M24 76 C36 80, 64 80, 76 76" stroke="#6F4E37" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="34" cy="28" r="2" fill="#C98A52" class="sparkle sp-1"/>
+                <circle cx="66" cy="24" r="2.2" fill="#C98A52" class="sparkle sp-2"/>
+                <defs>
+                    <radialGradient id="coffeeGlowH" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#C98A52"/>
+                        <stop offset="100%" stop-color="#6F4E37" stop-opacity="0"/>
+                    </radialGradient>
+                    <linearGradient id="cupGradH" x1="30" y1="46" x2="70" y2="72" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FFFFFF"/>
+                        <stop offset="100%" stop-color="#EFE5DB"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+    </div>
+    <h3>Premium Beans</h3>
+    <p>Biji kopi pilihan kualitas tinggi dengan profile roasting dan rasa konsisten.</p>
+</div>
+
+<!-- 02: Fast WiFi -->
+<div class="feature-card">
+    <span class="feature-badge">02</span>
+    <div class="feature-anim-wrap">
+        <div class="anim-circle">
+            <svg class="anim-svg anim-wifi" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="42" fill="url(#wifiGlowH)" opacity="0.15" class="bg-pulse"/>
+                <path class="wifi-wave wave-3" d="M24 38 A 38 38 0 0 1 76 38" stroke="#C98A52" stroke-width="3.2" stroke-linecap="round"/>
+                <path class="wifi-wave wave-2" d="M33 49 A 24 24 0 0 1 67 49" stroke="#C98A52" stroke-width="3.2" stroke-linecap="round"/>
+                <path class="wifi-wave wave-1" d="M42 60 A 11 11 0 0 1 58 60" stroke="#C98A52" stroke-width="3.2" stroke-linecap="round"/>
+                <circle class="wifi-dot" cx="50" cy="71" r="4.5" fill="#6F4E37"/>
+                <circle class="wifi-beacon" cx="50" cy="71" r="9" stroke="#C98A52" stroke-width="1.5" opacity="0.6"/>
+                <circle cx="28" cy="62" r="2" fill="#C98A52" class="sparkle sp-1"/>
+                <circle cx="72" cy="58" r="2" fill="#C98A52" class="sparkle sp-2"/>
+                <defs>
+                    <radialGradient id="wifiGlowH" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#C98A52"/>
+                        <stop offset="100%" stop-color="#6F4E37" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+            </svg>
+        </div>
+    </div>
+    <h3>Fast WiFi</h3>
+    <p>Koneksi internet stabil & colokan melimpah, nyaman untuk WFC dan meeting.</p>
+</div>
+
+<!-- 03: Fresh Pastry -->
+<div class="feature-card">
+    <span class="feature-badge">03</span>
+    <div class="feature-anim-wrap">
+        <div class="anim-circle">
+            <svg class="anim-svg anim-pastry" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="42" fill="url(#pastryGlowH)" opacity="0.15" class="bg-pulse"/>
+                <path class="pastry-aroma ar-1" d="M36 32 C34 26, 38 22, 36 16" stroke="#C98A52" stroke-width="2" stroke-linecap="round"/>
+                <path class="pastry-aroma ar-2" d="M50 28 C48 22, 52 18, 50 12" stroke="#C98A52" stroke-width="2" stroke-linecap="round"/>
+                <path class="pastry-aroma ar-3" d="M64 32 C62 26, 66 22, 64 16" stroke="#C98A52" stroke-width="2" stroke-linecap="round"/>
+                <path class="pastry-body" d="M22 66 C20 54, 35 42, 50 42 C65 42, 80 54, 78 66 C72 68, 62 60, 50 60 C38 60, 28 68, 22 66 Z" fill="url(#croissantGradH)" stroke="#6F4E37" stroke-width="2.5"/>
+                <path d="M38 46 C34 52, 34 60, 36 63" stroke="#C98A52" stroke-width="2" stroke-linecap="round"/>
+                <path d="M50 43 C48 50, 48 56, 50 60" stroke="#C98A52" stroke-width="2" stroke-linecap="round"/>
+                <path d="M62 46 C66 52, 66 60, 64 63" stroke="#C98A52" stroke-width="2" stroke-linecap="round"/>
+                <path class="sparkle sp-1" d="M28 32 L30 28 L32 32 L36 34 L32 36 L30 40 L28 36 L24 34 Z" fill="#C98A52"/>
+                <path class="sparkle sp-2" d="M68 28 L69.5 25 L71 28 L74 29.5 L71 31 L69.5 34 L68 31 L65 29.5 Z" fill="#C98A52"/>
+                <defs>
+                    <radialGradient id="pastryGlowH" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#C98A52"/>
+                        <stop offset="100%" stop-color="#6F4E37" stop-opacity="0"/>
+                    </radialGradient>
+                    <linearGradient id="croissantGradH" x1="22" y1="42" x2="78" y2="68" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#E8A663"/>
+                        <stop offset="60%" stop-color="#C98A52"/>
+                        <stop offset="100%" stop-color="#8B572A"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+    </div>
+    <h3>Fresh Pastry</h3>
+    <p>Artisan pastry dipanggang segar setiap pagi dengan bahan berkualitas terbaik.</p>
+</div>
+
+<!-- 04: Cozy Ambience -->
+<div class="feature-card">
+    <span class="feature-badge">04</span>
+    <div class="feature-anim-wrap">
+        <div class="anim-circle">
+            <svg class="anim-svg anim-cozy" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="42" fill="url(#cozyGlowH)" opacity="0.15" class="bg-pulse"/>
+                <line x1="50" y1="14" x2="50" y2="34" stroke="#6F4E37" stroke-width="2"/>
+                <path d="M38 46 L62 46 L58 34 L42 34 Z" fill="#6F4E37" stroke="#6F4E37" stroke-width="2" stroke-linejoin="round"/>
+                <circle class="lamp-bulb" cx="50" cy="49" r="4.5" fill="#FFF2C6"/>
+                <circle class="lamp-flare" cx="50" cy="51" r="14" fill="#FFDF7E" opacity="0.4"/>
+                <g class="leaf-branch">
+                    <path d="M50 78 C48 68, 56 60, 68 58" stroke="#6F4E37" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M68 58 C62 55, 60 48, 64 44 C68 48, 72 52, 68 58 Z" fill="#8FA876"/>
+                    <path d="M56 63 C52 60, 48 56, 52 50 C56 54, 58 58, 56 63 Z" fill="#A4BE8C"/>
+                    <path d="M62 70 C66 66, 72 65, 73 71 C68 73, 64 74, 62 70 Z" fill="#7D9965"/>
+                </g>
+                <circle cx="30" cy="58" r="2.2" fill="#C98A52" class="sparkle sp-1"/>
+                <circle cx="72" cy="38" r="1.8" fill="#C98A52" class="sparkle sp-2"/>
+                <defs>
+                    <radialGradient id="cozyGlowH" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#FFDF7E"/>
+                        <stop offset="100%" stop-color="#C98A52" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+            </svg>
+        </div>
+    </div>
+    <h3>Cozy Ambience</h3>
+    <p>Interior aesthetic bernuansa hangat, cocok untuk bersantai maupun produktif.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="testimonial">
+
+<div class="container reveal">
+
+<div class="testimonial-card">
+
+<p class="small-title">Testimoni</p>
+
+<h2>Apa Kata Mereka?</h2>
+
+<p>
+"Tempatnya nyaman banget buat kerja,
+kopinya konsisten enak, dan suasananya bikin betah berlama-lama."
+</p>
+
+<strong>— Sarah M. ★★★★★</strong>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="container contact reveal">
+
+<div>
+
+<p class="small-title">Lokasi</p>
+
+<h2>Lokasi & Jam Operasional</h2>
+
+<ul>
+
+<li>
+    <div class="contact-icon-box">
+        <svg class="contact-svg c-phone" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g class="phone-waves">
+                <path class="p-wave pw-1" d="M21 8 C23 10 23 14 21 16" stroke="#C98A52" stroke-width="1.5" stroke-linecap="round"/>
+                <path class="p-wave pw-2" d="M24 5 C27 8 27 17 24 20" stroke="#C98A52" stroke-width="1.5" stroke-linecap="round"/>
+            </g>
+            <g class="phone-body">
+                <path d="M10 6 C9 6 7.5 7.5 7.5 9 C7.5 15.5 13.5 21.5 20 21.5 C21.5 21.5 23 20 23 19 L20.5 15.5 L17.5 17 C15.5 15.5 13.5 13.5 12 11.5 L13.5 8.5 L10 6 Z" fill="url(#phoneGradH)" stroke="#6F4E37" stroke-width="1.5" stroke-linejoin="round"/>
+            </g>
+            <defs>
+                <linearGradient id="phoneGradH" x1="7.5" y1="6" x2="23" y2="21.5" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#E8A663"/>
+                    <stop offset="100%" stop-color="#C98A52"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <span>0812-3456-7890</span>
+</li>
+
+<li>
+    <div class="contact-icon-box">
+        <svg class="contact-svg c-insta" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect class="cam-body" x="6" y="6" width="20" height="20" rx="6" stroke="#6F4E37" stroke-width="1.8" fill="url(#instaGradH)" fill-opacity="0.15"/>
+            <circle class="cam-lens" cx="16" cy="16" r="5" stroke="#C98A52" stroke-width="1.8"/>
+            <circle class="cam-lens-inner" cx="16" cy="16" r="2.2" fill="#6F4E37"/>
+            <circle class="cam-flash" cx="21" cy="11" r="1.3" fill="#C98A52"/>
+            <defs>
+                <linearGradient id="instaGradH" x1="6" y1="6" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#E8A663"/>
+                    <stop offset="100%" stop-color="#C98A52"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <span>@brewbloom.cafe</span>
+</li>
+
+<li>
+    <div class="contact-icon-box">
+        <svg class="contact-svg c-clock" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="clock-face" cx="16" cy="16" r="10" stroke="#6F4E37" stroke-width="1.8" fill="url(#clockGradH)" fill-opacity="0.15"/>
+            <circle cx="16" cy="16" r="1.5" fill="#6F4E37"/>
+            <line class="clock-hour" x1="16" y1="16" x2="16" y2="10" stroke="#6F4E37" stroke-width="1.8" stroke-linecap="round"/>
+            <line class="clock-min" x1="16" y1="16" x2="21" y2="16" stroke="#C98A52" stroke-width="1.5" stroke-linecap="round"/>
+            <defs>
+                <radialGradient id="clockGradH" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#FFDF7E"/>
+                    <stop offset="100%" stop-color="#C98A52"/>
+                </radialGradient>
+            </defs>
+        </svg>
+    </div>
+    <div>
+        <div>Senin – Jumat : 08.00 – 22.00</div>
+        <div>Sabtu – Minggu : 07.00 – 23.00</div>
+    </div>
+</li>
+
+</ul>
+
+<a href="https://maps.google.com/?q=Jl.+Melati+No.123%2C+Cirebon" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:30px;">🗺️ Buka di Google Maps</a>
+
+</div>
+
+<img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=900" style="border-radius:24px; width:100%; height:400px; object-fit:cover; box-shadow:0 10px 30px rgba(0,0,0,.08);">
+
+</div>
+
+<div class="container reveal" style="margin-top:40px;">
+    <iframe 
+        src="https://maps.google.com/maps?q=Jl.+Melati+No.123%2C+Cirebon&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+        width="100%" 
+        height="380" 
+        style="border:0; width:100%; height:380px; border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,.08); display:block;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="container footer">
+
+<div>
+<h3>Brew & Bloom</h3>
+<p>Coffee • Food • Good Vibes</p>
+</div>
+
+<div class="footer-links">
+
+<a href="#">Instagram</a>
+
+<a href="#">Facebook</a>
+
+<a href="#">TikTok</a>
+
+</div>
+
+<p>© 2026 Brew & Bloom.</p>
+
+</div>
+
+</footer>
+
+<script>
+
+const nav=document.getElementById("navbar");
+
+window.addEventListener("scroll",()=>{
+nav.classList.toggle("scrolled",window.scrollY>60);
+});
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+},{threshold:.15});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+</script>
+
+</body>
+</html>
